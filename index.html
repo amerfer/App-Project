@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href = "style.css" rel = "stylesheet" type="text/css">
+        <link href="css_grid.css" rel ="stylesheet" type="text/css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <title>Home</title>
+
+    </head>
+
+    <body>
+        
+        <container>
+                        <header>
+                            
+                            <a href = index.html><button>Classes</button></a>
+                            <a href = "registration.html"><button>Registration</button></a>
+                            <a href = "login.html"><button>Login</button></a>
+                            <input id = "searchbox" type="text" placeholder="Search">
+                            <h3 id = "display" >
+                                Name:{{  currents.name  }}<br>
+                                Role:{{ currents.option }}<br>
+                                Email:{{  currents.email  }}<br>
+                                    Password:{{  currents.name  }}<br> 
+                            </h3>
+                        </header>
+
+                        <aside>
+                            <div id = "addingMethod">
+                             <label>Topic:</label>
+                             <input v-model ="newTopic"><br>
+
+                             <label>Price:</label>
+                             <input v-model ="newPrice"><br>
+
+                             <label>Locations:</label>
+                             <input v-model ="newLocation"><br>
+
+                             <label>Time:</label>
+                             <input v-model ="newTime" placeholder="e.g. 12:30"><br>
+
+                             <label>Length:</label>
+                             <input v-model ="newLength">  
+                             <button v-on:click="addNewClass(newTopic, newPrice, newLocation, newTime, newLength)">Add</button>  
+                            </div>
+                            <div class="filter">filter</div>
+                            <div class="filter">filter</div>
+                            <div class="filter">filter</div>
+                        </aside>
+
+                        <main>
+                            <ol>
+                               <li v-for= "element in rows" class = "classes">
+                                    Index: {{element.index}}<br>
+                                    Topic: {{ element.topic }} <br> 
+                                    Location: {{ element.location }} <br> 
+                                    Price: ${{ element.price }}<br>
+                                    Time: {{ element.time }}<br>
+                                    Length: {{ element.length }} hour(s)<br>
+                                    <label>Rating</label>
+                                    <select>
+                                        <option value = "1">1</option>
+                                        <option value = "2">2</option>
+                                        <option value = "3">3</option>
+                                        <option value = "4">4</option>
+                                        <option value = "5">5</option>
+                                    </select>
+                                    <button v-on:click = "removeMethod">Remove</button>
+                               </li>
+                            </ol>
+                        </main>
+                        <script src="methods.js"></script>
+        </container>
+    </body>
+</html>

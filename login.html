@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href = "style.css" rel = "stylesheet" type="text/css">
+        <!--<link href="css_grid.css" rel ="stylesheet" type="text/css">-->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <title>Login</title>
+    </head>
+
+    <body>
+        <container>
+                <header>
+                    <a href = index.html><button>Classes</button></a>
+                    <a href = "registration.html"><button>Registration</button></a>
+                    <a href = "login.html"><button>Login</button></a>
+                    <input id = "searchbox" type="text" placeholder="Search">
+                    <h3 id = "display" >
+                            Name:{{  currents.name  }}<br>
+                            Role:{{ currents.option }}<br>
+                            Email:{{  currents.email  }}<br>
+                            Password:{{  currents.name  }}<br> 
+                        </h3>
+                </header>
+
+                <div id ="login">
+                    <h1>Login</h1>
+                    <label>Email</label>
+                    <input required id = "email" type = "text">
+
+                    <label>Password</label>
+                    <input required id = "password" type = "text"><br>
+
+                    <button v-on:click = "loggingIn">Submit</button>
+                </div>
+                <script src="methods.js"></script>
+        </container>
+    </body>
+</html>

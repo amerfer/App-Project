@@ -1,0 +1,49 @@
+div,header,aside,main {
+    border: solid lightblue;
+    box-sizing: border-box;
+    margin: 1%;
+    padding: 10px;}
+
+    body{background-image: url(blackboard.jpg);
+        background-position: absolute;
+        background-repeat: no-repeat;
+        background-size:  cover;
+        background-attachment: scroll;}
+
+    header {width: 95%;}
+
+    #logo {width: 100px;}
+
+    #searchbox {width: 300px;}
+
+    #searchbox {
+    height: 50px;
+    display: inline-block}
+
+    .hello {display: inline-block}
+
+    button {
+    height: 50px;
+    margin: 20px;
+    padding: 10px;}
+
+    aside {
+    width: 20%;
+    float: left;}
+
+    main {
+    width: 70%;
+    margin-left: 25%;}
+
+    .filter {
+    width: 80%;
+    min-height: 100px;
+    display: inline-block;}
+
+    .classes {
+    border: solid lightblue;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+    display: inline-block;}
