@@ -2,55 +2,14 @@ var app = new Vue ({
     el: 'main',
     data:{
       rows: [
-                  {'index': 0, 'topic': 'math', 'location': 'hendon', 'price': 100, 'time': '12:30', 'length': 1.0 },
-                  {'index': 1,'topic': 'math', 'location': 'colindale', 'price': 80, 'time': '14:00', 'length': 2.0},
-                  {'index': 2,'topic': 'math', 'location': 'brent cross', 'price': 90, 'time': '16:30', 'length': 1.0},            
-      ]},
-    
-    methods:{
-      removeMethod:function(){
-        this.rows.splice(2)
-        alert(this.rows);
-        }
-    }  
-    })
-
-var addingMethod = new Vue({
-  el: '#add',
-  data: {
-      newIndex: 3,
-      newTopic:'',
-      newPrice: null,
-      newLocation:'',
-      newTime:'',
-      newLength: null,},
-
-       methods:{
-        addNewClass: function(topic, price, location, time, length){
-        
-
-              app.rows.push({
-              topic: topic,
-              location: location,
-              price: price,
-              time: time,
-              length: length});
-
-              alert(this.newIndex);
-
-              this.newIndex++;
-              this.newTopic='';
-              this.newPrice='';
-              this.newLocation='';
-              this.newTime='';
-              this.newLength='';
-        }
-      }
+                  {'topic': 'math', 'location': 'hendon', 'price': 100, 'time': '12:30', 'length': 1.0 },
+                  {'topic': 'math', 'location': 'colindale', 'price': 80, 'time': '14:00', 'length': 2.0},
+                  {'topic': 'math', 'location': 'brent cross', 'price': 90, 'time': '16:30', 'length': 1.0},            
+      ]}
 })
+
+
     
-
-
-
 //Checks if the fields in registration are all filled
 var register = new Vue({
   el: '#registration',
@@ -138,7 +97,43 @@ var displayDetails = new Vue({
                 'password':current.newPassword}}
 })
       
-      //localStorage.setItem([stored.name], JSON.stringify(stored))
+var addingMethod = new Vue({
+  el: '#addingMethod',
+  data: {
+      seen: '',
+      newTopic:'',
+      newPrice: null,
+      newLocation:'',
+      newTime:'',
+      newLength: null,},
+
+       methods:{
+        addNewClass: function(topic, price, location, time, length){
+
+
+          if(current.option === 'Student'){
+            alert("Sorry ONLY Administrator can add new classes")
+          }
+
+          else{
+              app.rows.push({  
+              topic: topic,
+              location: location,
+              price: price,
+              time: time,
+              length: length});
+
+              this.newTopic='';
+              this.newPrice='';
+              this.newLocation='';
+              this.newTime='';
+              this.newLength='';}
+              
+        }, 
+      }
+})      
+
+//localStorage.setItem([stored.name], JSON.stringify(stored))
 
       //if (loggingInEmail === localStorage[loggingInEmail]) <------ the input does not equal to the string
       
