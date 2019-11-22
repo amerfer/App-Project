@@ -1,11 +1,42 @@
 var app = new Vue ({
     el: 'main',
     data:{
+      search: '',
       rows: [
                   {'topic': 'math', 'location': 'hendon', 'price': 100, 'time': '12:30', 'length': 1.0 },
                   {'topic': 'math', 'location': 'colindale', 'price': 80, 'time': '14:00', 'length': 2.0},
                   {'topic': 'math', 'location': 'brent cross', 'price': 90, 'time': '16:30', 'length': 1.0},            
-      ]}
+      ]},
+
+  computed: {
+    filteredAndSorted(){
+     // function to compare names
+
+    var topic = true;
+    var location = true;
+    var rowz;
+
+     function compare(a, b) {
+       if (a.topic < b.topic || a.topic> b.topic) {
+        topic = false;
+        return -1;
+       }
+       if (a.location < b.location || a.location> b.location) {
+         location =false;
+         return 1;
+         }
+       return 0;
+     }
+     
+      if(topic){
+        rowz = this.rows.filter(row => {
+        return row.topic.toLowerCase().includes(this.search.toLowerCase())
+     }).sort(compare)
+      }
+
+     return rowz;
+    }
+  }
 })
 
 
@@ -51,7 +82,7 @@ var register = new Vue({
     }
   })
 
-
+//Login in function
 var stored = "";
 var login = new Vue({
   el: "#login",
@@ -94,9 +125,19 @@ var displayDetails = new Vue({
     currents: {'name': current.name,
                 'option': current.option,
                 'email': current.newEmail,
-                'password':current.newPassword}}
+                'password':current.newPassword}},
+
+    methods:{
+      logoutMehtod: function(){
+        if(current != undefined){
+          localStorage.removeItem('current')
+          alert('You have been logged out');
+        }
+      }
+    }           
 })
-      
+
+//Checks if the user is administrator. If ture, add a new list
 var addingMethod = new Vue({
   el: '#addingMethod',
   data: {

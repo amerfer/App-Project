@@ -2,37 +2,38 @@
 <html>
     <head>
         <link href = "style.css" rel = "stylesheet" type="text/css">
-        <!--<link href="css_grid.css" rel ="stylesheet" type="text/css">-->
+        <link href="grid.css" rel ="stylesheet" type="text/css">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <title>Login</title>
     </head>
 
     <body>
-        <container>
+        <div class= 'container'>
                 <header>
-                    <a href = index.html><button>Classes</button></a>
-                    <a href = "registration.html"><button>Registration</button></a>
-                    <a href = "login.html"><button>Login</button></a>
-                    <input id = "searchbox" type="text" placeholder="Search">
+                    <a href = index.html><h4>Classes</h4></a>
+                    <a href = "registration.html"><h4>Registration</h4></a>
+                    <a href = "login.html"><h4 class="current">Login</h4></a>
                     <h3 id = "display" >
                             Name:{{  currents.name  }}<br>
                             Role:{{ currents.option }}<br>
                             Email:{{  currents.email  }}<br>
                             Password:{{  currents.name  }}<br> 
+                            <button id = 'logout' v-on:click = 'logoutMehtod()'>Logout</button>
                         </h3>
                 </header>
 
                 <div id ="login">
                     <h1>Login</h1>
                     <label>Email</label>
-                    <input required id = "email" type = "text">
+                    <input required id = "email" type = "text"><br><br>
 
                     <label>Password</label>
-                    <input required id = "password" type = "text"><br>
+                    <input required id = "password" type = "text"><br><br>
 
                     <button v-on:click = "loggingIn">Submit</button>
                 </div>
                 <script src="methods.js"></script>
-        </container>
+            </div>
+        
     </body>
 </html>

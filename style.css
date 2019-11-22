@@ -1,49 +1,99 @@
-div,header,aside,main {
+header,aside,footer {
     border: solid lightblue;
     box-sizing: border-box;
     margin: 1%;
     padding: 10px;}
 
-    body{background-image: url(blackboard.jpg);
+    div.display{
+        right: 0;
+    }
+    
+    h4{
+        color: black;
+        font-size: 30px;
+        display: inline;
+        margin: 10px;
+        border-right: 1px;
+    }
+
+    h4.current a:hover{
+        color:grey;
+    }
+
+    h4.current{
+        color: grey;
+    }
+
+    #display{
+        text-align: right;
+    }
+    .classes {
+    border: solid lightblue;
+    border-radius: 25px;
+    box-sizing: border-box;
+    margin: 5px;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+    display: inline-block;}
+
+    body{
+        font-family: 'Arial';
+        background-image: url("blackboard.jpg");
         background-position: absolute;
         background-repeat: no-repeat;
         background-size:  cover;
-        background-attachment: scroll;}
+        background-attachment: fixed;
+        margin:0;
+        padding: 0;}
 
     header {width: 95%;}
 
-    #logo {width: 100px;}
-
-    #searchbox {width: 300px;}
-
     #searchbox {
-    height: 50px;
+    margin-left: 30px;    
     display: inline-block}
 
     .hello {display: inline-block}
 
-    button {
-    height: 50px;
-    margin: 20px;
-    padding: 10px;}
-
     aside {
+    margin: 20px;    
+    padding: 30px;
     width: 20%;
     float: left;}
 
+    input, label {
+        float:left;
+    }
+
+    label {
+        width:180px;
+        clear:left;
+        text-align:left;
+        padding-right:10px;
+    }
+
     main {
     width: 70%;
-    margin-left: 25%;}
+    margin-left: 10%;}
 
     .filter {
     width: 80%;
     min-height: 100px;
     display: inline-block;}
 
-    .classes {
-    border: solid lightblue;
-    box-sizing: border-box;
-    padding: 10px;
-    width: 200px;
-    height: 200px;
-    display: inline-block;}
+    #registration,#login{
+        border: solid lightblue;
+        box-sizing: border-box;
+        position: absolute;
+        width: 320px;
+        height: 350px;
+        top: 30%;
+        left: 37%;
+        padding: 10px 40px;   
+    }
+
+    header,aside,.classes, #registration,#login{
+        background-color: whitesmoke;
+    }
+
+    

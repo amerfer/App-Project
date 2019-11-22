@@ -2,46 +2,47 @@
 <html>
     <head>
         <link href = "style.css" rel = "stylesheet" type="text/css">
-        <!--<link href="css_grid.css" rel ="stylesheet" type="text/css">-->
+        <link href="grid.css" rel ="stylesheet" type="text/css">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <title>Registration</title>
     </head>
 
     <body>
-        <container>
+        <div class= 'container'>
                 <header>
-                    <a href = index.html><button>Classes</button></a>
-                    <a href = "registration.html"><button>Registration</button></a>
-                    <a href = "login.html"><button>Login</button></a>
-                    <input id = "searchbox" type="text" placeholder="Search">
+                    <a href = index.html><h4>Classes</h4></a>
+                    <a href = "registration.html"><h4 class="current">Registration</h4></a>
+                    <a href = "login.html"><h4>Login</h4></a>
                     <h3 id = "display" >
                         Name:{{  currents.name  }}<br>
                         Role:{{ currents.option }}<br>
                         Email:{{  currents.email  }}<br>
                         Password:{{  currents.name  }}<br> 
+                        <button id = 'logout' v-on:click = 'logoutMehtod()'>Logout</button>
                     </h3>
                 </header>
 
                 <div id ="registration">
                         <h1>Register</h1>
                         
-                        <label>Name</label>
-                        <input required id = "newName" type = "text">
+                        <label>Name</label><br>
+                        <input required id = "newName" type = "text"><br><br>
 
-                        <label>Student or Administrator</label>
+                        <label>Student or Administrator</label><br>
                         <select id = "options">
                             <option value = "Student">Student</option>
                             <option value = "Administrator">Administrator</option>
-                        </select>
+                        </select><br><br>
 
-                        <label>Email</label>
-                        <input required type = "email" id = "newEmail"><br>
+                        <label>Email</label><br>
+                        <input required type = "email" id = "newEmail"><br><br>
 
-                        <label>Password</label>
+                        <label>Password</label><br>
                         <input required id = "newPassword" type = "text"><br>
                         <button v-on:click = "registerMethod">Submit</button>
                 </div>
                 <script src="methods.js"></script>
-        </container>
+        </div>
+        
     </body>
 </html>
