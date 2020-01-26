@@ -71,7 +71,8 @@ var register = new Vue({
       //Storing user information  
       localStorage.setItem([userObject.newEmail], JSON.stringify(userObject));
       //informing the user they have been registered 
-      alert("You have been registered");}
+      alert("You have been registered");
+    }
       
 
       else{
