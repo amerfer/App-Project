@@ -138,6 +138,8 @@ var displayDetails = new Vue({
     }           
 })
 
+let lessonObject = {};
+
 //Checks if the user is administrator. If ture, add a new list
 var addingMethod = new Vue({
   el: '#addingMethod',
@@ -158,6 +160,8 @@ var addingMethod = new Vue({
           }
 
           else{
+
+              //pushes this object to 'rows' array
               app.rows.push({  
               topic: topic,
               location: location,
@@ -165,11 +169,32 @@ var addingMethod = new Vue({
               time: time,
               length: length});
 
+              //put all the inputs into the lessonObject variable
+              lessonObject = {
+                topic: topic,
+                location: location,
+                price: price,
+                time: time,
+                length: length,
+              }  
+
+              //fetch this URL, which hopefully puts this data into this url
+              fetch('http://localhost:3000/collections/lessons/', {
+                method: 'post',
+                body: JSON.stringify(lessonObject)
+              })
+
+              .then((response) => response.json())
+              .then((data) => console.log(data))
+              .catch((error) => console.log())
+
               this.newTopic='';
               this.newPrice='';
               this.newLocation='';
               this.newTime='';
               this.newLength='';}
+
+              
               
         }, 
       }

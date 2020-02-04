@@ -27,6 +27,7 @@ header,aside,footer {
     #display{
         text-align: right;
     }
+    
     .classes {
     border: solid lightblue;
     border-radius: 25px;
@@ -36,6 +37,17 @@ header,aside,footer {
     width: 200px;
     height: 200px;
     display: inline-block;}
+
+    #lessons {
+        background-color: white;
+        border: solid lightblue;
+        border-radius: 25px;
+        box-sizing: border-box;
+        margin: 5px;
+        padding: 10px;
+        width: 200px;
+        height: 200px;
+        display: inline-block;}
 
     body{
         font-family: 'Arial';

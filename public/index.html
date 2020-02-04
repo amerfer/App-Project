@@ -51,7 +51,11 @@
 
                         <main>
                             <input id =searchbox type="text" v-model="search" placeholder="Search">
-                            <ol>
+
+                            <!-- this div displays the lessons from client.js -->
+                            <div id= "lessonOutput"></div>
+                            
+                            <!--<ol>
                                <li v-for= "(element, index) in filteredAndSorted" class = "classes">
                                     Topic: {{ element.topic }} <br> 
                                     Location: {{ element.location }} <br> 
@@ -68,8 +72,10 @@
                                     </select>
                                     <button v-on:click="rows.splice(index, 1)">remove</button>
                                </li>
-                            </ol>
+                            </ol>-->
+
                         </main>
+                        <script src = "client.js"></script>
                         <script src="methods.js"></script>
                 </div>
         

@@ -10,8 +10,17 @@ app.use(bodyParser.json())
 const MongoClient = require('mongodb').MongoClient;
 let db;
 MongoClient.connect('mongodb://localhost:27017/', (err, client) => {
-db = client.db('labs')
+db = client.db('cw')
 })
+
+let allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Headers', "*");
+    next();
+  }
+  app.use(allowCrossDomain);
+
+//collections name
 
 // get the collection name
 app.param('users', (req, res, next, collectionName) => {
@@ -20,20 +29,39 @@ req.collection = db.collection(collectionName)
 return next()
 })
 
+// get the collection name
+app.param('lessons', (req, res, next, collectionName) => {
+    req.collection = db.collection(collectionName)
+    // console.log('collection name:', req.collection)
+    return next()
+    })
+
 // dispaly a message for root path to show that API is working
 app.get('/', function (req, res) {
-res.send('Select a collection, e.g., /collections/users')
+res.send('Users collection, URL: /collections/users, Lessons collection, URL: /collections/lessons')
+console.log('Result: API is working')
 })
 
 // retrieve all the objects from an collection
 app.get('/collections/:users', (req, res) => {
 req.collection.find({}).toArray((e, results) => {
 if (e) return next(e)
-console.log('here are the results:')
-console.log(results)
 res.send(results)
 })
 })
+
+
+// retrieve all the objects from an collection
+app.get('/collections/:lessons', (req, res) => {
+    req.collection.find({}).toArray((e, results) => {
+    if (e) return next(e)
+    console.log('here are the results:')
+    console.log(results)
+    res.send(results)
+    })
+    })
+
+
 
 
 // add a users
