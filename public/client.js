@@ -1,5 +1,6 @@
         //event listener
         window.onload = getLesson();
+        
 
         function getLesson(){
         fetch('http://localhost:3000/collections/lessons/', {mode: 'cors'})
@@ -33,13 +34,29 @@
         .catch((err) => console.log('fetch not working'))  
         }
 
+
+        //test if post is working
+
+        //the object to test
+        let lessonObject = {};
+
         function addLesson(){
+
+          lessonObject = {
+            topic: "Art",
+            location: "London",
+            price: "$800",
+            time: "400",
+            length: "3",
+          }
+
           fetch(`http://localhost:3000/collections/lessons/`, {
             method: 'post',
-            body: JSON.stringify()
+            body: JSON.stringify(lessonObject)
         })
 
           .then((response) => response.json())
-          .then((data) => console.log('it is working'))
+          .then((data) => console.log(data))
           .catch((error) => console.log('try again'))
         }
+        window.onload = addLesson();
