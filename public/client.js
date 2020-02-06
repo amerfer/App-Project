@@ -52,6 +52,10 @@
 
           fetch(`http://localhost:3000/collections/lessons/`, {
             method: 'post',
+            headers: {
+              'Content-Type': 'application/json'
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
             body: JSON.stringify(lessonObject)
         })
 
