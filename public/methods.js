@@ -69,11 +69,25 @@ var register = new Vue({
       
       //Storing user information  
       localStorage.setItem([userObject.newEmail], JSON.stringify(userObject));
+
+      //fetch this URL, which hopefully puts this data into this url
+      fetch(`http://localhost:3000/collections/users/`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(userObject)
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log('try again'))
+      
       //informing the user they have been registered 
       alert("You have been registered");
+      location.reload();
     }
-      
-
+  
       else{
         alert("This email exist, Please try again");
         return false;
@@ -194,7 +208,11 @@ var addingMethod = new Vue({
               this.newPrice='';
               this.newLocation='';
               this.newTime='';
-              this.newLength='';}
+              this.newLength='';
+              
+              location.reload();
+            
+            }  
         }, 
 })      
 
