@@ -39,7 +39,7 @@ var app = new Vue ({
   }
 })
 
-
+let lessonObject = {};
     
 //Checks if the fields in registration are all filled
 var register = new Vue({
@@ -67,7 +67,6 @@ var register = new Vue({
       userObject.newEmail = document.getElementById("newEmail").value; 
       userObject.newPassword = document.getElementById("newPassword").value;
       
-        
       //Storing user information  
       localStorage.setItem([userObject.newEmail], JSON.stringify(userObject));
       //informing the user they have been registered 
@@ -138,7 +137,7 @@ var displayDetails = new Vue({
     }           
 })
 
-let lessonObject = {};
+
 
 //Checks if the user is administrator. If ture, add a new list
 var addingMethod = new Vue({
@@ -170,34 +169,33 @@ var addingMethod = new Vue({
               length: length});
 
               //put all the inputs into the lessonObject variable
-              lessonObject = {
-                topic: topic,
-                location: location,
-                price: price,
-                time: time,
-                length: length,
-              }  
+              //lessonObject = {
+                lessonObject.topic = topic,
+                lessonObject.location = location,
+                lessonObject.price = price,
+                lessonObject. time = time,
+                lessonObject.length = length,
+            //  }  
 
               //fetch this URL, which hopefully puts this data into this url
-              fetch('http://localhost:3000/collections/lessons/', {
-                method: 'post',
-                body: JSON.stringify(lessonObject)
-              })
-
-              .then((response) => response.json())
-              .then((data) => console.log(data))
-              .catch((error) => console.log())
-
+              fetch(`http://localhost:3000/collections/lessons/`, {
+            method: 'post',
+            headers: {
+              'Content-Type': 'application/json'
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(lessonObject)
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.log('try again'))
+        }
               this.newTopic='';
               this.newPrice='';
               this.newLocation='';
               this.newTime='';
               this.newLength='';}
-
-              
-              
         }, 
-      }
 })      
 
 //localStorage.setItem([stored.name], JSON.stringify(stored))
